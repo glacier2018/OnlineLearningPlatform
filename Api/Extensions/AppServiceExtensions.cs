@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Core;
 using Application.Users;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -18,10 +19,11 @@ namespace Api.Extensions
         public static IServiceCollection AddAppService(this IServiceCollection services, IConfiguration config)
         {
             services.AddControllers()
-                .AddFluentValidation(config =>{
+                .AddFluentValidation(config =>
+                {
                     config.RegisterValidatorsFromAssemblyContaining<Login>();
                 });
-                
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
@@ -30,8 +32,9 @@ namespace Api.Extensions
             {
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
-            
-            services.AddMediatR( typeof(Login.Handler).Assembly);
+
+            services.AddMediatR(typeof(Login.Handler).Assembly);
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
             return services;
         }

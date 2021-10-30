@@ -32,8 +32,8 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
 
-            
-             services.AddAppService(_config);
+
+            services.AddAppService(_config);
 
             services.AddIdentityServices(_config);
         }

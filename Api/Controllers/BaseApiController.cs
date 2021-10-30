@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Core;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Api.Controllers
 {
@@ -11,6 +13,9 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class BaseApiController : ControllerBase
     {
+        protected IMediator _meidator;
+        
+        protected IMediator Mediator => _meidator ??= HttpContext.RequestServices.GetService<IMediator>();
         protected ActionResult HandleResponse<T>(Response<T> res)
         {
             if (res == null) return NotFound();
