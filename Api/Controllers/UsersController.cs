@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Dtos;
 using Application.Users;
 using Domain;
 using Microsoft.AspNetCore.Identity;
@@ -18,6 +19,12 @@ namespace Api.Controllers
         public async Task<ActionResult<User>> GetAllUsers()
         {
             return HandleResponse(await Mediator.Send(new GetAllUsers.Query()));
+        }
+
+        [HttpPost("UserLogin")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            return HandleResponse(await Mediator.Send(new Login.Query { LoginDto = loginDto }));
         }
     }
 }

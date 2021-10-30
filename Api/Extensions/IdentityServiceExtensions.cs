@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Interfaces;
 using Domain;
+using Infrastructure.Security;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +26,7 @@ namespace Api.Extensions
               .AddSignInManager<SignInManager<User>>();
 
             services.AddAuthentication();
+            services.AddScoped<ITokenService,TokenService>();
             return services;
         }
     }

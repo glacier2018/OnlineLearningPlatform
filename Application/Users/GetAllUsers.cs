@@ -16,11 +16,11 @@ namespace Application.Users
 {
     public class GetAllUsers
     {
-        public class Query : IRequest<Response<List<UserDto>>>
+        public class Query : IRequest<Response<List<AllUsersDto>>>
         {
 
         }
-        public class Handler : IRequestHandler<Query, Response<List<UserDto>>>
+        public class Handler : IRequestHandler<Query, Response<List<AllUsersDto>>>
         {
             private readonly UserManager<User> _userManager;
             private readonly IMapper _mapper;
@@ -31,10 +31,10 @@ namespace Application.Users
                 _userManager = userManager;
             }
 
-            public async Task<Response<List<UserDto>>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Response<List<AllUsersDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var users = await _userManager.Users.ProjectTo<UserDto>(_mapper.ConfigurationProvider).ToListAsync();
-                return Response<List<UserDto>>.Succeed(users);
+                var users = await _userManager.Users.ProjectTo<AllUsersDto>(_mapper.ConfigurationProvider).ToListAsync();
+                return Response<List<AllUsersDto>>.Succeed(users);
             }
         }
     }
