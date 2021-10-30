@@ -26,5 +26,10 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new Login.Query { LoginDto = loginDto }));
         }
+        [HttpPost("UserRegister")]
+        public async Task<IActionResult> Register(RegisterDto registerDto)
+        {
+            return HandleResponse(await Mediator.Send(new Register.Command { RegisterDto = registerDto }));
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace Domain
         public int UserType { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string ForgotPasswordToken { get; set; }
+        public string  ForgotPasswordToken { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

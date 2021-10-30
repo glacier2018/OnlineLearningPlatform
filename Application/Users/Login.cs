@@ -25,7 +25,7 @@ namespace Application.Users
         {
             public QueryValidator()
             {
-                RuleFor(x => x.LoginDto).SetValidator(new LoginValidator());
+                RuleFor(x => x.LoginDto).SetValidator(new LoginDtoValidator());
             }
         }
         public class Handler : IRequestHandler<Query, Response<OneUserDto>>

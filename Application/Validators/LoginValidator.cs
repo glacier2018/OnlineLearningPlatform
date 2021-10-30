@@ -7,9 +7,9 @@ using FluentValidation;
 
 namespace Application.Validators
 {
-    public class LoginValidator : AbstractValidator<LoginDto>
+    public class LoginDtoValidator : AbstractValidator<LoginDto>
     {
-        public LoginValidator()
+        public LoginDtoValidator()
         {
             RuleFor(x => x.Email).NotEmpty();
             RuleFor(x => x.Password).NotEmpty();
