@@ -58,7 +58,9 @@ namespace Application.Users
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now
                 };
+                
                 var result = await _userManager.CreateAsync(user, request.RegisterDto.Password);
+
                 if (result.Succeeded)
                 {
                     var userDto = _mapper.Map<OneUserDto>(user);

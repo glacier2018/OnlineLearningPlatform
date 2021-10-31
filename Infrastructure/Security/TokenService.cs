@@ -24,7 +24,7 @@ namespace Infrastructure.Security
         {
             var claims = new List<Claim>
             {
-                // new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email,user.Email)
             };
 
@@ -37,7 +37,7 @@ namespace Infrastructure.Security
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = creds
-            };  
+            };
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);

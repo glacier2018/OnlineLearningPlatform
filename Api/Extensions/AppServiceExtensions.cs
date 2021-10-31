@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Core;
+using Application.Interfaces;
 using Application.Users;
 using FluentValidation.AspNetCore;
+using Infrastructure.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -36,7 +38,9 @@ namespace Api.Extensions
             services.AddMediatR(typeof(Login.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
+            services.AddScoped<IUserAccessor, UserAccessor>();
+
             return services;
         }
-    }
+
 }

@@ -20,6 +20,11 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new GetAllUsers.Query()));
         }
+        [HttpGet("GetUserById")]
+        public async Task<ActionResult<OneUserDto>> GetOneUser(int id)
+        {
+            return HandleResponse(await Mediator.Send(new GetOneUser.Query { Id = id }));
+        }
 
         [HttpPost("UserLogin")]
         public async Task<IActionResult> Login(LoginDto loginDto)
