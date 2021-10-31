@@ -30,12 +30,12 @@ namespace Application.Users
         }
         public class Handler : IRequestHandler<Query, Response<OneUserDto>>
         {
-            private readonly SignInManager<User> _signInManager;
-            private readonly UserManager<User> _userManager;
+            private readonly SignInManager<ApplicationUser> _signInManager;
+            private readonly UserManager<ApplicationUser> _userManager;
             private readonly IMapper _mapper;
             private readonly ITokenService _tokenService;
 
-            public Handler(SignInManager<User> signInManager, UserManager<User> userManager, IMapper mapper, ITokenService tokenService)
+            public Handler(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IMapper mapper, ITokenService tokenService)
             {
                 _signInManager = signInManager;
                 _userManager = userManager;

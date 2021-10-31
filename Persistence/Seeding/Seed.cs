@@ -10,14 +10,14 @@ namespace Persistence.Seeding
 {
     public static class Seed
     {
-        public static async Task SeedData(DataContext context, UserManager<User> userManager)
+        public static async Task SeedData(DataContext context, UserManager<ApplicationUser> userManager)
         {
             if (!userManager.Users.Any())
             {
-                var users = new List<User>
+                var users = new List<ApplicationUser>
                 {
-                    new User {
-                        UserName = "Cam",
+                    new ApplicationUser {
+                        UserName = "Cam@email.com",
                         FirstName = "Charles",
                         LastName = "Xavier",
                         Email = "Cam@email.com",
@@ -26,8 +26,8 @@ namespace Persistence.Seeding
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Today.AddHours(4)
                     },
-                    new User {
-                        UserName = "Tim",
+                    new ApplicationUser {
+                        UserName = "Tim@email.com",
                         FirstName = "James",
                         LastName = "Logan",
                         Email = "Tim@email.com",
@@ -36,8 +36,8 @@ namespace Persistence.Seeding
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Today.AddHours(23)
                     },
-                    new User {
-                        UserName = "Bob",
+                    new ApplicationUser {
+                        UserName = "Bob@email.com",
                         FirstName = "Charles",
                         LastName = "Bob",
                         Email = "Bob@email.com",

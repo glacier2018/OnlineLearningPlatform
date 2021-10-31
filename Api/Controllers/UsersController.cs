@@ -16,7 +16,7 @@ namespace Api.Controllers
     {
 
         [HttpGet("GetAllUsers")]
-        public async Task<ActionResult<User>> GetAllUsers()
+        public async Task<ActionResult<ApplicationUser>> GetAllUsers()
         {
             return HandleResponse(await Mediator.Send(new GetAllUsers.Query()));
         }
@@ -30,6 +30,11 @@ namespace Api.Controllers
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
             return HandleResponse(await Mediator.Send(new Register.Command { RegisterDto = registerDto }));
+        }
+        [HttpDelete("DeleteUser")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return HandleResponse(await Mediator.Send(new DeleteUser.Command { Id = id }));
         }
     }
 }

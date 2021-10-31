@@ -22,10 +22,10 @@ namespace Application.Users
         }
         public class Handler : IRequestHandler<Query, Response<List<AllUsersDto>>>
         {
-            private readonly UserManager<User> _userManager;
+            private readonly UserManager<ApplicationUser> _userManager;
             private readonly IMapper _mapper;
 
-            public Handler(UserManager<User> userManager, IMapper mapper)
+            public Handler(UserManager<ApplicationUser> userManager, IMapper mapper)
             {
                 _mapper = mapper;
                 _userManager = userManager;

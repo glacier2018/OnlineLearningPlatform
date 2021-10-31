@@ -16,17 +16,22 @@ namespace Api.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddIdentityCore<User>(opt =>
+            services.AddDefaultIdentity<IdentityUser<int>>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddEntityFrameworkStores<DataContext>();
+
+
+
+            services.AddIdentityCore<ApplicationUser>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireDigit = false;
 
             }).AddEntityFrameworkStores<DataContext>()
-              .AddSignInManager<SignInManager<User>>();
+              .AddSignInManager<SignInManager<ApplicationUser>>();
 
             services.AddAuthentication();
-            services.AddScoped<ITokenService,TokenService>();
+            services.AddScoped<ITokenService, TokenService>();
             return services;
         }
     }

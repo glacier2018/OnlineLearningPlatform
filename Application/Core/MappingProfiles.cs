@@ -12,8 +12,8 @@ namespace Application.Core
     {
         public MappingProfiles()
         {
-            CreateMap<User, AllUsersDto>();
-            CreateMap<User, OneUserDto>();
+            CreateMap<ApplicationUser, AllUsersDto>();
+            CreateMap<ApplicationUser, OneUserDto>();
         }
     }
 }

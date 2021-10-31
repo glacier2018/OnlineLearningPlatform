@@ -20,11 +20,11 @@ namespace Infrastructure.Security
             _config = config;
         }
 
-        public string CreateToken(User user)
+        public string CreateToken(ApplicationUser user)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                // new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email,user.Email)
             };
 
