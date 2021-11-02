@@ -41,5 +41,17 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new DeleteUser.Command { Id = id }));
         }
+
+        [HttpPut("UpdateUser")]
+        public async Task<IActionResult> Update(UpdateUserDto updateUserDto)
+        {
+            return HandleResponse(await Mediator.Send(new UpdateUser.Command { UpdateUserDto = updateUserDto }));
+        }
+
+        // [HttpGet("testing")]
+        // public async Task<IActionResult> Testing()
+        // {
+        //     return HandleResponse(await Mediator.Send(new Testing.Query()));
+        // }
     }
 }

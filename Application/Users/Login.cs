@@ -46,6 +46,7 @@ namespace Application.Users
             public async Task<Response<OneUserDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByEmailAsync(request.LoginDto.Email);
+
                 if (user == null) return null;
 
                 var result = await _signInManager.CheckPasswordSignInAsync(user, request.LoginDto.Password, false);
@@ -53,7 +54,9 @@ namespace Application.Users
                 if (result.Succeeded)
                 {
                     var userToReturn = _mapper.Map<OneUserDto>(user);
+
                     userToReturn.Token = _tokenService.CreateToken(user);
+
                     return Response<OneUserDto>.Succeed(userToReturn);
                 }
                 return Response<OneUserDto>.Fail("wrong email or password, please try again", "401");

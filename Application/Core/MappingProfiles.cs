@@ -14,6 +14,7 @@ namespace Application.Core
         {
             CreateMap<ApplicationUser, AllUsersDto>();
             CreateMap<ApplicationUser, OneUserDto>();
+            CreateMap<UpdateUserDto, ApplicationUser>();
         }
     }
 }
