@@ -52,6 +52,8 @@ namespace Persistence.Seeding
                     await userManager.CreateAsync(user, "password");
                 }
             }
+
+            
         }
     }
 }

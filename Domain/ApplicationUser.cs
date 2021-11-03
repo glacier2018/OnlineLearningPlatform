@@ -16,5 +16,12 @@ namespace Domain
         public string ForgotPasswordToken { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+
+        //Navigation properties
+        public ICollection<PostReply> PostReplies { get; set; }
+        public ICollection<Post> Posts { get; set; }
+        public ICollection<Photo> Photos { get; set; }
+        public ICollection<PostLike> PostLikes { get; set; }
+        
     }
 }

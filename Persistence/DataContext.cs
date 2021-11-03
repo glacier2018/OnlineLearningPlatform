@@ -15,23 +15,36 @@ namespace Persistence
         {
         }
 
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<PostCategory> PostCategories { get; set; }
+        public DbSet<TagPost> TagPosts { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public DbSet<PostReply> PostReplies { get; set; }
+        public DbSet<PostLike> PostLikes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // builder.Entity<ActivityAttendee>(x => x.HasKey(aa => new { aa.ActivityId, aa.AppUserId }));
 
-            // builder.Entity<ActivityAttendee>()
-            //     .HasOne(aa => aa.AppUser)
-            //     .WithMany(au => au.Activities)
-            //     .HasForeignKey(aa => aa.AppUserId);
-
-            // builder.Entity<ActivityAttendee>()
-            //     .HasOne(aa => aa.Activity)
-            //     .WithMany(a => a.Attendees)
-            //     .HasForeignKey(aa => aa.ActivityId);
             builder.Entity<ApplicationUser>()
                 .Property(a => a.Id)
                 .ValueGeneratedOnAdd();
+
+            //Many to Many relationship: Tag & Post
+            builder.Entity<TagPost>()
+                .HasKey(x => new { x.PostId, x.TagId });
+            builder.Entity<TagPost>()
+                .HasOne(tp => tp.Post)
+                .WithMany(p => p.TagPosts)
+                .HasForeignKey(tp => tp.PostId);
+            builder.Entity<TagPost>()
+                .HasOne(tp => tp.Tag)
+                .WithMany(t => t.TagPosts)
+                .HasForeignKey(tp => tp.TagId);
+
+
         }
 
     }
