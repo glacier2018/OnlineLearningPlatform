@@ -51,8 +51,8 @@ namespace Persistence.Migrations
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PostCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ApplicationUserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    PostCategoryId = table.Column<int>(type: "INTEGER", nullable: true),
+                    ApplicationUserId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -62,13 +62,13 @@ namespace Persistence.Migrations
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Posts_PostCategories_PostCategoryId",
                         column: x => x.PostCategoryId,
                         principalTable: "PostCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

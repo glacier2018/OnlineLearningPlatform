@@ -9,7 +9,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211103040242_PostRelatedRelationshipsAdded")]
+    [Migration("20211103050456_PostRelatedRelationshipsAdded")]
     partial class PostRelatedRelationshipsAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,7 +136,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ApplicationUserId")
+                    b.Property<int?>("ApplicationUserId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Content")
@@ -151,7 +151,7 @@ namespace Persistence.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("PostCategoryId")
+                    b.Property<int?>("PostCategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
@@ -439,15 +439,11 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.ApplicationUser", "ApplicationUser")
                         .WithMany("Posts")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("Domain.PostCategory", "PostCategory")
                         .WithMany("Posts")
-                        .HasForeignKey("PostCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostCategoryId");
 
                     b.Navigation("ApplicationUser");
 

@@ -18,9 +18,9 @@ namespace Domain
         //Navigation Properties and FKs:
 
         public PostCategory PostCategory { get; set; }
-        public int PostCategoryId { get; set; }
+        public int? PostCategoryId { get; set; }
 
-        public int ApplicationUserId { get; set; }
+        public int? ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
         public ICollection<PostReply> PostReplies { get; set; }

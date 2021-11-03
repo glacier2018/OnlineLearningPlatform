@@ -33,7 +33,6 @@ namespace Application.Users
         }
         public class Handler : IRequestHandler<Command, Response<UpdateUserDto>>
         {
-            private readonly DataContext _context;
             private readonly IUserAccessor _userAccessor;
             private readonly IMapper _mapper;
             private readonly UserManager<ApplicationUser> _userManager;

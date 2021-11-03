@@ -52,8 +52,51 @@ namespace Persistence.Seeding
                     await userManager.CreateAsync(user, "password");
                 }
             }
+            if (!context.Posts.Any())
+            {
+                var posts = new List<Post>
+                {
+                    new Post
+                    {
+                        Title = "How to learn HTML",
+                        Description = "learning skills",
+                        Content = "How can I learn HTML so effictively that I can master everything within a day?",
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        IsActive = true,
+                    },
+                    new Post
+                    {
+                        Title = "How to learn CSS",
+                        Description = "learning skills",
+                        Content = "How can I learn CSS so effictively that I can master everything within a day?",
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        IsActive = true,
+                    },
+                    new Post
+                    {
+                        Title = "How to learn Javascript",
+                        Description = "learning skills",
+                        Content = "How can I learn Javascript so effictively that I can master everything within a day?",
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        IsActive = true,
+                    },
+                    new Post
+                    {
+                        Title = "How to learn React",
+                        Description = "learning skills",
+                        Content = "How can I learn React so effictively that I can master everything within a day?",
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        IsActive = true,
+                    },
+                };
+                await context.Posts.AddRangeAsync(posts);
+                await context.SaveChangesAsync();
+            }
 
-            
         }
     }
 }

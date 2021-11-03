@@ -44,7 +44,17 @@ namespace Persistence
                 .WithMany(t => t.TagPosts)
                 .HasForeignKey(tp => tp.TagId);
 
+            //Setting Deleting behaviors between one to many relationships
+            //so that we can have posts without valid FK for PostCategory and AppUser
+            // builder.Entity<PostCategory>()
+            //     .HasMany(x => x.Posts)
+            //     .WithOne(x => x.PostCategory)
+            //     .OnDelete(DeleteBehavior.SetNull);
 
+            // builder.Entity<ApplicationUser>()
+            //     .HasMany(x => x.Posts)
+            //     .WithOne(x => x.ApplicationUser)
+            //     .OnDelete(DeleteBehavior.SetNull);
         }
 
     }
