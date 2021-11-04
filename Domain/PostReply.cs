@@ -20,5 +20,6 @@ namespace Domain
         public Post Post { get; set; }
         public int PostId { get; set; }
 
+
     }
 }

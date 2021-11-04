@@ -8,5 +8,6 @@ namespace Application.Interfaces
     public interface IUserAccessor
     {
         public string GetUserEmail();
+        public int GetUserId();
     }
 }

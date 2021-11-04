@@ -33,8 +33,7 @@ namespace Persistence
                 .ValueGeneratedOnAdd();
 
             //Many to Many relationship: Tag & Post
-            builder.Entity<TagPost>()
-                .HasKey(x => new { x.PostId, x.TagId });
+            builder.Entity<TagPost>(a => a.HasKey(x => new { x.PostId, x.TagId }));
             builder.Entity<TagPost>()
                 .HasOne(tp => tp.Post)
                 .WithMany(p => p.TagPosts)

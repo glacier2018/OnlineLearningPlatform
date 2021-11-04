@@ -16,7 +16,7 @@ namespace Persistence.Migrations
                     CategoryName = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryDescription = table.Column<string>(type: "TEXT", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    UpdateAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     PhotoUrl = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

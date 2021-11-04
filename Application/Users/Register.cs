@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Core;
@@ -58,7 +56,7 @@ namespace Application.Users
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now
                 };
-                
+
                 var result = await _userManager.CreateAsync(user, request.RegisterDto.Password);
 
                 if (result.Succeeded)

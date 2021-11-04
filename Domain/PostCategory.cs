@@ -11,7 +11,7 @@ namespace Domain
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public string PhotoUrl { get; set; }
         public ICollection<Post> Posts { get; set; }
     }

@@ -11,7 +11,6 @@ namespace Domain
         public string TagName { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-
         public ICollection<TagPost> TagPosts { get; set; }
 
     }

@@ -85,15 +85,39 @@ namespace Persistence.Seeding
                     },
                     new Post
                     {
-                        Title = "How to learn React",
-                        Description = "learning skills",
-                        Content = "How can I learn React so effictively that I can master everything within a day?",
+                        Title = "Javascrit is the Best?",
+                        Description = "Is Javascript  really the best?!",
+                        Content = "Can any one explain why javascript is the best language in the whole world?",
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Now,
                         IsActive = true,
                     },
                 };
                 await context.Posts.AddRangeAsync(posts);
+                await context.SaveChangesAsync();
+            }
+            if (!await context.Tags.AnyAsync())
+            {
+                var tags = new List<Tag>
+                {
+                    new Tag { TagName = "SideProjects", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                    new Tag { TagName = "Crypto", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                    new Tag { TagName = "JobSeeking", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                    new Tag { TagName = "ProgramingLanguages", CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now},
+                };
+                await context.Tags.AddRangeAsync(tags);
+                await context.SaveChangesAsync();
+            }
+            if (!await context.PostCategories.AnyAsync())
+            {
+                var postCategories = new List<PostCategory>
+                {
+                    new PostCategory{ CategoryName = "Frontend",CategoryDescription = "Here we talk about frontend technologies",CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PhotoUrl = null},
+                    new PostCategory{ CategoryName = "Backend",CategoryDescription = "Here we talk about backend technologies",CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PhotoUrl = null},
+                    new PostCategory{ CategoryName = "Interview experience",CategoryDescription = "Here we talk about interview experiences",CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PhotoUrl = null},
+                    new PostCategory{ CategoryName = "Non-tech",CategoryDescription = "Here we talk about non-tech related stuff: gaming sports and whatever you like",CreatedAt = DateTime.Now, UpdatedAt = DateTime.Now, PhotoUrl = null}
+                };
+                await context.PostCategories.AddRangeAsync(postCategories);
                 await context.SaveChangesAsync();
             }
 

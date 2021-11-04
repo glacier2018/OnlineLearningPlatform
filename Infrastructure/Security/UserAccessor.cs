@@ -20,5 +20,9 @@ namespace Infrastructure.Security
         {
             return _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Email);
         }
+        public int GetUserId()
+        {
+            return Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        }
     }
 }
