@@ -16,9 +16,9 @@ namespace Application.Posts
 {
     public class GetAllPosts
     {
-        public class Query : IRequest<Response<List<PostDto>>> { }
+        public class Query : IRequest<Response<List<ListPostDto>>> { }
 
-        public class Handler : IRequestHandler<Query, Response<List<PostDto>>>
+        public class Handler : IRequestHandler<Query, Response<List<ListPostDto>>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -29,14 +29,14 @@ namespace Application.Posts
                 _mapper = mapper;
             }
 
-            public async Task<Response<List<PostDto>>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Response<List<ListPostDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var posts = await _context.Posts
                     .Where(x => x.IsActive)
-                    .ProjectTo<PostDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<ListPostDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
                 return posts != null
-                    ? Response<List<PostDto>>.Succeed(posts)
+                    ? Response<List<ListPostDto>>.Succeed(posts)
                     : null;
             }
         }

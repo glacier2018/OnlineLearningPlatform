@@ -21,13 +21,13 @@ namespace Application.Users
     {
         public class Command : IRequest<Response<Unit>>
         {
-            public PostDto PostDto { get; set; }
+            public AddPostDto AddPostDto { get; set; }
         }
         public class CommandValidator : AbstractValidator<Command>
         {
             public CommandValidator()
             {
-                RuleFor(x => x.PostDto).SetValidator(new PostDtoValidator());
+                RuleFor(x => x.AddPostDto).SetValidator(new PostDtoValidator());
             }
         }
         public class Handler : IRequestHandler<Command, Response<Unit>>
@@ -54,13 +54,13 @@ namespace Application.Users
                 if (user == null)
                     return Response<Unit>.Fail("can't find user", "400");
 
-                var postCategory = await _context.PostCategories.FindAsync(request.PostDto.PostCategoryId);
+                var postCategory = await _context.PostCategories.FindAsync(request.AddPostDto.PostCategoryId);
                 if (postCategory == null)
                     return Response<Unit>.Fail("Invalid Post Category Id, please try again", "400");
 
-                var post = _mapper.Map<Post>(request.PostDto);
+                var post = _mapper.Map<Post>(request.AddPostDto);
                 var tagPosts = new List<TagPost>();
-                foreach (var tagId in request.PostDto.TagIds)
+                foreach (var tagId in request.AddPostDto.TagIds)
                 {
                     var tag = await _context.Tags.FindAsync(tagId);
                     tagPosts.Add(new TagPost

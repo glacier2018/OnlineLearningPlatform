@@ -17,10 +17,10 @@ namespace Application.Posts
 {
     public class GetPostById
     {
-        public class Query : IRequest<Response<PostDto>>
+        public class Query : IRequest<Response<ListPostDto>>
         { public int Id { get; set; } }
 
-        public class Handler : IRequestHandler<Query, Response<PostDto>>
+        public class Handler : IRequestHandler<Query, Response<ListPostDto>>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -30,15 +30,15 @@ namespace Application.Posts
                 _context = context;
             }
 
-            public async Task<Response<PostDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Response<ListPostDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var post = await _context.Posts
                     .Where(x => x.IsActive)
-                    .ProjectTo<PostDto>(_mapper.ConfigurationProvider)
+                    .ProjectTo<ListPostDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(x => x.Id == request.Id);
                 return post == null
                     ? null
-                    : Response<PostDto>.Succeed(post);
+                    : Response<ListPostDto>.Succeed(post);
             }
         }
 

@@ -15,8 +15,8 @@ namespace Application.Core
             CreateMap<ApplicationUser, AllUsersDto>();
             CreateMap<ApplicationUser, OneUserDto>();
             CreateMap<UpdateUserDto, ApplicationUser>();
-            CreateMap<PostDto, Post>();
-            CreateMap<Post, PostDto>()
+            CreateMap<AddPostDto, Post>();
+            CreateMap<Post, ListPostDto>()
                 .ForMember(dest => dest.TagIds, opt => opt.MapFrom(x => x.TagPosts.Select(a => a.TagId)))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(x => x.TagPosts));
             CreateMap<TagPost, TagPostDto>()
