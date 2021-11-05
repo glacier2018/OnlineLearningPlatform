@@ -27,5 +27,11 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new AddPost.Command { PostDto = postDto }));
         }
+        [HttpDelete("DeletePost")]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            return HandleResponse(await Mediator.Send(new DeletePost.Command { Id = id }));
+        }
+
     }
 }

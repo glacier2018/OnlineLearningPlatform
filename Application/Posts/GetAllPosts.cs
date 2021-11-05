@@ -32,6 +32,7 @@ namespace Application.Posts
             public async Task<Response<List<PostDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var posts = await _context.Posts
+                    .Where(x => x.IsActive)
                     .ProjectTo<PostDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
                 return posts != null

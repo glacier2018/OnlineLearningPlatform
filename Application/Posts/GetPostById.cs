@@ -33,6 +33,7 @@ namespace Application.Posts
             public async Task<Response<PostDto>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var post = await _context.Posts
+                    .Where(x => x.IsActive)
                     .ProjectTo<PostDto>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(x => x.Id == request.Id);
                 return post == null
