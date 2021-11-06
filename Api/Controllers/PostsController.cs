@@ -32,6 +32,12 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new DeletePost.Command { Id = id }));
         }
+        [HttpPut("UpdatePost")]
+        public async Task<IActionResult> UpdatePost(UpdatePostDto updatePostDto)
+        {
+            return HandleResponse(await Mediator.Send(new UpatePost.Command { UpdatePostDto = updatePostDto }));
+        }
+
 
     }
 }

@@ -27,7 +27,7 @@ namespace Domain
         public ICollection<PostReply> PostReplies { get; set; }
 
         public ICollection<Photo> Photos { get; set; }
-        public ICollection<TagPost> TagPosts { get; set; }
+        public ICollection<TagPost> TagPosts { get; set; } = new List<TagPost> { };
         public ICollection<PostLike> PostLikes { get; set; }
 
     }
