@@ -37,10 +37,14 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new UpatePost.Command { UpdatePostDto = updatePostDto }));
         }
-        [HttpPut("AddPostTag")]
+        [HttpPost("AddPostTag")]
         public async Task<IActionResult> AddPostTag(int postId, int tagId)
         {
             return HandleResponse(await Mediator.Send(new AddPostTag.Command { PostId = postId, TagId = tagId }));
+        }
+        public async Task<IActionResult> AddPostReply(AddPostReplyDto addPostReplyDto)
+        {
+            return HandleResponse(await Mediator.Send(new AddPostReply.Command { AddPostReplyDto = addPostReplyDto }));
         }
 
     }

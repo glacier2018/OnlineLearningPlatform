@@ -23,6 +23,8 @@ namespace Application.Core
                 .ForMember(dest => dest.TagName, opt => opt.MapFrom(x => x.Tag.TagName));
             CreateMap<UpdatePostDto, Post>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.PostId));
+            CreateMap<AddPostReplyDto, PostReply>();
+
 
         }
     }
