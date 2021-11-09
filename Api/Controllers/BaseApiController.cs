@@ -24,7 +24,7 @@ namespace Api.Controllers
 
             if (res.Success && res.Data == null) return NotFound(Response<T>.Fail("Not found", "404"));
 
-            return BadRequest(Response<T>.Fail("Bad Request", "400"));
+            return BadRequest(Response<T>.Fail(res.ErrorMessage, res.ErrorCode));
 
         }
     }

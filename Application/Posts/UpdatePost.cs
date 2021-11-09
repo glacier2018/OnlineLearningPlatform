@@ -48,9 +48,9 @@ namespace Application.Users
                         .ThenInclude(a => a.Post)
                         .FirstOrDefaultAsync(x =>
                         x.ApplicationUserId == _userAccessor.GetUserId() &&
-                        x.Id == request.UpdatePostDto.Id && x.IsActive);
+                        x.Id == request.UpdatePostDto.PostId && x.IsActive);
 
-                if (post == null)
+                if (post == null)   
                     return null;
 
                 _context.RemoveRange(post.TagPosts);

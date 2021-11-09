@@ -21,8 +21,8 @@ namespace Application.Core
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(x => x.TagPosts));
             CreateMap<TagPost, TagPostDto>()
                 .ForMember(dest => dest.TagName, opt => opt.MapFrom(x => x.Tag.TagName));
-            CreateMap<UpdatePostDto, Post>();
-                // .ForMember(dest => dest.TagPosts, opt => opt.MapFrom( x=> x.TagIds.Select( id => new TagPost{ Post = })));
+            CreateMap<UpdatePostDto, Post>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.PostId));
 
         }
     }
