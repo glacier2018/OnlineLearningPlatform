@@ -24,20 +24,18 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new GetAllPosts.Query()));
         }
-        [HttpPost("AddPost")]
-        public async Task<ActionResult<Post>> AddPost(AddPostDto AddPostDto)
-        {
-            return HandleResponse(await Mediator.Send(new AddPost.Command { AddPostDto = AddPostDto }));
-        }
-        [HttpDelete("DeletePost")]
-        public async Task<IActionResult> DeletePost(int id)
-        {
-            return HandleResponse(await Mediator.Send(new DeletePost.Command { Id = id }));
-        }
+
+
         [HttpPut("UpdatePost")]
         public async Task<IActionResult> UpdatePost(UpdatePostDto updatePostDto)
         {
             return HandleResponse(await Mediator.Send(new UpatePost.Command { UpdatePostDto = updatePostDto }));
+        }
+
+        [HttpPost("AddPost")]
+        public async Task<ActionResult<Post>> AddPost(AddPostDto AddPostDto)
+        {
+            return HandleResponse(await Mediator.Send(new AddPost.Command { AddPostDto = AddPostDto }));
         }
         [HttpPost("AddPostTag")]
         public async Task<IActionResult> AddPostTag(int postId, int tagId)
@@ -49,6 +47,24 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new AddPostReply.Command { AddPostReplyDto = addPostReplyDto }));
         }
+        [HttpDelete("DeletePost")]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            return HandleResponse(await Mediator.Send(new DeletePost.Command { Id = id }));
+        }
+        [HttpDelete("DeletePostReply")]
+        //this endpoint should be protected and allowed only to postReply owner
+
+        public async Task<IActionResult> DeletePostReply(int postReplyId)
+        {
+            return HandleResponse(await Mediator.Send(new DeletePostReply.Command { PostReplyId = postReplyId }));
+        }
+        [HttpDelete("DeletePostTag")]
+        public async Task<IActionResult> DeletePostTag(int postReplyId)
+        {
+            return HandleResponse(await Mediator.Send(new DeletePostReply.Command { PostReplyId = postReplyId }));
+        }
+
 
     }
 }

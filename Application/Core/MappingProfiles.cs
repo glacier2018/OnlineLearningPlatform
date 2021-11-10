@@ -19,7 +19,8 @@ namespace Application.Core
             CreateMap<AddPostDto, Post>();
             CreateMap<Post, ListPostDto>()
                 .ForMember(dest => dest.TagIds, opt => opt.MapFrom(x => x.TagPosts.Select(a => a.TagId)))
-                .ForMember(dest => dest.Tags, opt => opt.MapFrom(x => x.TagPosts));
+                .ForMember(dest => dest.Tags, opt => opt.MapFrom(x => x.TagPosts))
+                .ForMember(dest => dest.PostReplies, opt => opt.MapFrom(x => x.PostReplies.Where(a => a.IsActive)));
             CreateMap<TagPost, TagPostDto>()
                 .ForMember(dest => dest.TagName, opt => opt.MapFrom(x => x.Tag.TagName));
             CreateMap<UpdatePostDto, Post>()
@@ -27,6 +28,7 @@ namespace Application.Core
             CreateMap<AddPostReplyDto, PostReply>();
             CreateMap<PostReply, ListPostReplyDto>()
                 .ForMember(dest => dest.PostReplyId, opt => opt.MapFrom(x => x.Id));
+
 
 
         }

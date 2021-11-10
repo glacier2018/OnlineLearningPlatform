@@ -59,7 +59,6 @@ namespace Application.Users
                     if (targetPostReply == null) return Response<Unit>.Fail("can't find your reply", "403");
                     postReply.TargetPostReply = targetPostReply;
                 }
-
                 postReply.ApplicationUser = user;
                 postReply.Post = post;
                 _context.PostReplies.Add(postReply);
