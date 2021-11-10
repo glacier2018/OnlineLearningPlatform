@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Application.Interfaces;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Application.Dtos.PostDtos;
 
 namespace Application.Users
 {

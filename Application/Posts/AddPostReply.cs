@@ -5,7 +5,7 @@ using Application.Validators;
 using Domain;
 using FluentValidation;
 using MediatR;
-using Application.Dtos;
+using Application.Dtos.PostReplyDtos;
 using AutoMapper;
 using Persistence;
 using Application.Core;

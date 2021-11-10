@@ -2,6 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Core;
 using Application.Dtos;
+using Application.Dtos.UserDtos;
 using Application.Interfaces;
 using Application.Validators;
 using AutoMapper;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Domain;
 
-namespace Application.Dtos
+namespace Application.Dtos.PostDtos
 {
     public class AddPostDto
     {

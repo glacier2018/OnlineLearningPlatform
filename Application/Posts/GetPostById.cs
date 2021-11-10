@@ -12,6 +12,7 @@ using AutoMapper;
 using Application.Dtos;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using Application.Dtos.PostDtos;
 
 namespace Application.Posts
 {

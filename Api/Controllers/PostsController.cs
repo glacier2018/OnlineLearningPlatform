@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Dtos;
+using Application.Dtos.PostDtos;
+using Application.Dtos.PostReplyDtos;
 using Application.Posts;
 using Application.Users;
 using Domain;

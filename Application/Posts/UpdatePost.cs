@@ -12,6 +12,7 @@ using Application.Core;
 using Microsoft.EntityFrameworkCore;
 using Application.Interfaces;
 using System.Collections.Generic;
+using Application.Dtos.PostDtos;
 
 namespace Application.Users
 {

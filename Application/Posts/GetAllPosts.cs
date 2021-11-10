@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Core;
 using Application.Dtos;
+using Application.Dtos.PostDtos;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Domain;
