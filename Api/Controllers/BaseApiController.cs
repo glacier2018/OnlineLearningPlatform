@@ -18,7 +18,7 @@ namespace Api.Controllers
         protected IMediator Mediator => _meidator ??= HttpContext.RequestServices.GetService<IMediator>();
         protected ActionResult HandleResponse<T>(Response<T> res)
         {
-            if (res == null) return NotFound(Response<T>.Fail("Not found", "404"));
+            if (res == null) return NotFound(Response<T>.Fail("Item Not found", "404"));
 
             if (res.Success && res.Data != null) return Ok(res);
 

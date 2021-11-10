@@ -24,7 +24,16 @@ namespace Api.Controllers
         {
             return HandleResponse(await Mediator.Send(new GetAllPosts.Query()));
         }
-
+        [HttpGet("GetPostsByUserId")]
+        public async Task<ActionResult<List<ListPostDto>>> GetPostsByUserId(int userId)
+        {
+            return HandleResponse(await Mediator.Send(new GetPostsByUserId.Query { ApplicationUserId = userId }));
+        }
+        [HttpGet("GetPostsByCategoryId")]
+        public async Task<ActionResult<List<ListPostDto>>> GetPostsByCategoryId(int postCategoryId)
+        {
+            return HandleResponse(await Mediator.Send(new GetPostsByCategoryId.Query { PostCategoryId = postCategoryId }));
+        }
 
         [HttpPut("UpdatePost")]
         public async Task<IActionResult> UpdatePost(UpdatePostDto updatePostDto)
