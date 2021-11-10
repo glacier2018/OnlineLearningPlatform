@@ -60,9 +60,9 @@ namespace Api.Controllers
             return HandleResponse(await Mediator.Send(new DeletePostReply.Command { PostReplyId = postReplyId }));
         }
         [HttpDelete("DeletePostTag")]
-        public async Task<IActionResult> DeletePostTag(int postReplyId)
+        public async Task<IActionResult> DeletePostTag(int postId, int tagId)
         {
-            return HandleResponse(await Mediator.Send(new DeletePostReply.Command { PostReplyId = postReplyId }));
+            return HandleResponse(await Mediator.Send(new DeletePostTag.Command { PostId = postId, TagId = tagId }));
         }
 
 
