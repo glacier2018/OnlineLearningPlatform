@@ -24,6 +24,8 @@ namespace Application.Core
             CreateMap<UpdatePostDto, Post>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(x => x.PostId));
             CreateMap<AddPostReplyDto, PostReply>();
+            CreateMap<PostReply, ListPostReplyDto>()
+                .ForMember(dest => dest.PostReplyId, opt => opt.MapFrom(x => x.Id));
 
 
         }

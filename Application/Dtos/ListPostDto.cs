@@ -17,6 +17,8 @@ namespace Application.Dtos
 
         public ICollection<TagPostDto> Tags { get; set; }
 
+        public ICollection<ListPostReplyDto> PostReplies { get; set; }
+
         public int ApplicationUserId { get; set; }
     }
 }

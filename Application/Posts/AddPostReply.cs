@@ -52,7 +52,7 @@ namespace Application.Users
                     .Include(x => x.PostReplies)
                     .FirstOrDefaultAsync(x => x.Id == request.AddPostReplyDto.PostId);
                 if (post == null) return null;
-                if (request.AddPostReplyDto.TargetPostReplyId != null)
+                if (!string.IsNullOrEmpty(request.AddPostReplyDto.TargetPostReplyId.ToString()))
                 {
                     var targetPostReply = await _context.PostReplies
                         .FirstOrDefaultAsync(x => x.Id == request.AddPostReplyDto.TargetPostReplyId && x.IsActive);
